@@ -1,0 +1,7 @@
+.elements__title-box {
+    display: flex;
+    flex-direction: row;
+    background-color: #fff;
+    border-radius: 0 0 10px 10px;
+    width: 100%;
+}

@@ -1,0 +1,10 @@
+.elements__like-btn {
+    width: 22px;
+    height: 22px;
+    background-image: url(../../../images/like.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    align-self: center;
+    margin-left: auto;
+    padding-right: 22px;
+}

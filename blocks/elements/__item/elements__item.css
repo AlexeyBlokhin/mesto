@@ -1,0 +1,7 @@
+.elements__item {
+    display: flex;
+    flex-direction: column;
+    width: 282px;
+    justify-self: center;
+    
+}

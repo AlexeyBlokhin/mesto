@@ -1,5 +1,5 @@
 .profile {
     display: flex;
     flex-direction: row;
-    width: 880px;
+    width: 100%;
 }
