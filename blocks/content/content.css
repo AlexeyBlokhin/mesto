@@ -1,0 +1,6 @@
+.content {
+    width: 880px;
+    display: flex;
+    flex-direction: column;
+    padding: 35px 0 65px;
+}
