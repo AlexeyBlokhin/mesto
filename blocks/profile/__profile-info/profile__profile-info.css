@@ -5,3 +5,9 @@
     justify-content: center;
     padding: 0 18px 0 30px;
 }
+
+@media screen and (max-width: 720px) {
+    .profile__profile-info {
+        padding: 22px 0 36px 0;
+    }
+}

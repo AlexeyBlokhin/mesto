@@ -9,3 +9,11 @@
     margin-left: auto;
     
 }
+
+@media screen and (max-width: 720px) {
+    .profile__add-btn {
+        margin-left: 0;
+        width: 90%;
+        max-width: 282px;
+    }
+}

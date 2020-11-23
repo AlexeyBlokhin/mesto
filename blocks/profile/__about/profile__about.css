@@ -6,3 +6,19 @@
     line-height: 1.2;
     font-weight: 400;
 }
+
+@media screen and (max-width: 720px) {
+    .profile__about {
+        text-align: center;
+
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .profile__about {
+        font-size: 14px;
+        line-height: 1.2;
+        
+
+    }
+}
