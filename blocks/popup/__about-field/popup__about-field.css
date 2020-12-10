@@ -1,0 +1,20 @@
+.popup__about-field {
+    padding-bottom: 13px;
+    width: 358px;
+    margin: 0 auto 0;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0 , 0, 0.2);
+    font-family: inherit; 
+}
+
+.popup__about-field::placeholder {
+    color: #000;
+}
+
+@media screen and (max-width: 540px) {
+    .popup__about-field {
+        max-width: 282px;
+        width: 80%;
+        
+    }
+}

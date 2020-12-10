@@ -5,3 +5,11 @@
     justify-self: center;
     
 }
+
+@media screen and (max-width: 480px) {
+    .elements__item {
+        max-width: 282px;
+        width: 90%;
+        
+    }
+}

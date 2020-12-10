@@ -1,4 +1,4 @@
-<html lang="ru">
+<!DOCTYPE html lang="ru">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +13,7 @@
       </header>
       <main class="content">
           <section class="profile">
-            <img class="profile__avatar" src="images/avatar.jpg">
+            <img class="profile__avatar" src="images/avatar.jpg" alt="Жак-Ив Кусто">
             <div class="profile__profile-info">
               <div class="profile__name-box">
                 <p class="profile__name">Жак-Ив Кусто</p>
@@ -30,38 +30,38 @@
                 <img class="elements__image" src="images/onega.jpg" alt="берег на кромке леса">
                 <div class="elements__title-box">
                   <p class="elements__title">Онежское озеро</p>
-                  <div class="elements__like-btn"></div>  
+                  <button class="elements__like-btn" type="button"></button>  
                 </div>  
               </li>
               <li class="elements__item">
                 <img class="elements__image" src="images/kamchatka.jpg" alt="ледник и гора">
                 <div class="elements__title-box">
                   <p class="elements__title">Камчатский полуостров</p>
-                  <div class="elements__like-btn"></div>  
+                  <button class="elements__like-btn" type="button"></button>  
                 </div>  
               <li class="elements__item">
                 <img class="elements__image" src="images/taganay.jpg" alt="покрытая снегом вершина горы">
                 <div class="elements__title-box"> 
                   <p class="elements__title">Таганай</p>
-                  <div class="elements__like-btn"></div>  
+                  <button class="elements__like-btn" type="button"></button>  
                 </div>
               <li class="elements__item">
                 <img class="elements__image" src="images/peterburg.jpg" alt="городской канал днем">
                 <div class="elements__title-box">
                   <p class="elements__title">Санкт-Петербург</p>
-                  <div class="elements__like-btn"></div>  
+                  <button class="elements__like-btn" type="button"></button>  
                 </div>
               <li class="elements__item">
                   <img class="elements__image" src="images/altai.jpg" alt="человек стоит в лесу">
                   <div class="elements__title-box">
                     <p class="elements__title">Алтай</p>
-                    <div class="elements__like-btn"></div>  
+                    <button class="elements__like-btn" type="button"></button>  
                   </div>
               <li class="elements__item">
                 <img class="elements__image" src="images/moscow.jpg" alt="вид на город ночью">
                 <div class="elements__title-box">
                   <p class="elements__title">Москва</p>
-                  <div class="elements__like-btn"></div>  
+                  <button class="elements__like-btn" type="button"></button>  
                 </div>                  
             </ul>
           </section>
@@ -69,6 +69,20 @@
       <footer class="footer">
         <p class="footer__copyright">&copy; 2020 Mesto Russia</p>    
       </footer>
+    </div>
+    <div class="popup">
+      <div class="popup__container">
+        <button class="popup__close-btn"></button>
+        <h3 class="popup__title">Редактировать профиль</h3>
+        <form class="popup__form" method="POST" onsubmit="return formSubmitHandler"> 
+          <input class="popup__name-field" type="text" name="name" placeholder="">
+          <input class="popup__about-field" type="text" name="about" placeholder="">
+          <button class="popup__save-btn" type="submit">
+            <span>Сохранить</span>
+          </button>
+        </form>  
+      </div>
     </div>    
+  <script src="js/script.js"></script>
   </body>
 </html>

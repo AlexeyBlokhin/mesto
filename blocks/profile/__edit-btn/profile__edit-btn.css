@@ -6,8 +6,12 @@
     background-position: center;
     border: 1px solid #fff;
     align-self: center;
-    
-    
+    transition: opacity 0.2s linear 0s;
+}
+
+.profile__edit-btn:hover {
+    opacity: 0.6;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 480px) {

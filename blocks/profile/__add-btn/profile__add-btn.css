@@ -7,7 +7,12 @@
     border: 2px solid #fff;
     align-self: center;
     margin-left: auto;
-    
+    transition: opacity 0.2s linear 0s;
+}
+
+.profile__add-btn:hover {
+    opacity: 0.6;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 720px) {
