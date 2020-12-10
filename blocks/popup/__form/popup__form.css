@@ -6,3 +6,9 @@
     padding-bottom: 37px;
     margin: 0 auto 0;
 }
+
+@media screen and (max-width: 540px) {
+    .popup_form {
+        width: 238px;
+    }
+}
