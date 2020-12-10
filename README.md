@@ -2,8 +2,13 @@
 
 ### Обзор
 
+* Интро
 * Figma
 * Методы
+
+**Интро**
+
+[Место](https://alexeyblokhin.github.io/mesto/) - проектная работа по применению JS. 
 
 **Figma**
 
