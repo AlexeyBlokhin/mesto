@@ -1,20 +1,17 @@
-.popup__name-field {
+.popup__input {
     padding-bottom: 13px;
     width: 358px;
-    margin: 0 auto 0;
+    margin: 0 auto 30px;
     border: none;
     border-bottom: 1px solid rgba(0, 0 , 0, 0.2);
-    font-family: inherit; 
-}
-
-.popup__name-field::placeholder {
-    color: #000;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.2; 
 }
 
 @media screen and (max-width: 540px) {
-    .popup__name-field {
+    .popup__input {
         max-width: 282px;
         width: 100%;
-        
     }
 }
