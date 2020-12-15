@@ -8,7 +8,7 @@
 }
 
 @media screen and (max-width: 540px) {
-    .popup_form {
+    .popup__form {
         width: 238px;
     }
 }

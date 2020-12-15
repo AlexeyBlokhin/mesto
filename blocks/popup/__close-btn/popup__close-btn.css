@@ -6,11 +6,13 @@
     right: -42px;
     background-image: url(../../../images/close.svg);
     border: 0;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     background-color: rgba(0, 0, 0, 0);
     transition: opacity 0.2s linear 0s;
     padding: 0;
+    transform: rotate(-45deg);
 }
 
 .popup__close-btn:hover {
@@ -20,10 +22,9 @@
 
 @media screen and (max-width: 480px) {
     .popup__close-btn {
-        height: 26px;
-        width: 26px;
         top: -42px;
         right: 0;
-        
+        background-size: 26px 26px;
+
     }
 }
