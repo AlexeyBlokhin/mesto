@@ -1,0 +1,20 @@
+.mesto__delete-btn {
+    height: 18px;
+    width: 18px;
+    position: absolute;
+    top: 18px;
+    right: 15px;
+    background-image: url(../../../images/delete.svg);
+    border: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: rgba(0, 0, 0, 0);
+    transition: opacity 0.2s linear 0s;
+    padding: 0;
+}
+    
+.mesto__delete-btn:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}

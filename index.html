@@ -22,52 +22,10 @@
               </div>
               <p class="profile__about">Исследователь океана</p>
             </div>
-            <button class="profile__add-btn"  type="button" aria-label="Add"></button>
+            <button class="profile__add-btn"  type="button" aria-label="Добавить"></button>
           </section>
           <section class="elements">
             <ul class="elements__grid">
-              <li class="elements__item">
-                <img class="elements__image" src="./images/onega.jpg" alt="берег на кромке леса">
-                <div class="elements__title-box">
-                  <h3 class="elements__title">Онежское озеро</h3>
-                  <button class="elements__like-btn" type="button" aria-label="Like"></button>  
-                </div>  
-              </li>
-              <li class="elements__item">
-                <img class="elements__image" src="./images/kamchatka.jpg" alt="человек в гидрокостюме сидит на берегу моря">
-                <div class="elements__title-box">
-                  <h3 class="elements__title">Камчатский полуостров</h3>
-                  <button class="elements__like-btn" type="button" aria-label="Like"></button>  
-                </div>
-              </li>    
-              <li class="elements__item">
-                <img class="elements__image" src="./images/taganay.jpg" alt="покрытая снегом вершина горы">
-                <div class="elements__title-box"> 
-                  <h3 class="elements__title">Таганай</h3>
-                  <button class="elements__like-btn" type="button" aria-label="Like"></button>  
-                </div>
-              </li>  
-              <li class="elements__item">
-                <img class="elements__image" src="./images/peterburg.jpg" alt="городской канал днём">
-                <div class="elements__title-box">
-                  <h3 class="elements__title">Санкт-Петербург</h3>
-                  <button class="elements__like-btn" type="button" aria-label="Like"></button>  
-                </div>
-              </li>  
-              <li class="elements__item">
-                  <img class="elements__image" src="./images/altai.jpg" alt="река на фоне гор днём">
-                  <div class="elements__title-box">
-                    <p class="elements__title">Алтай</p>
-                    <button class="elements__like-btn" type="button" aria-label="Like"></button>  
-                  </div>
-              </li>    
-              <li class="elements__item">
-                <img class="elements__image" src="./images/moscow.jpg" alt="вид на город ночью">
-                <div class="elements__title-box">
-                  <h3 class="elements__title">Москва</h3>
-                  <button class="elements__like-btn" type="button" aria-label="Like"></button>  
-                </div>
-              </li>                    
             </ul>
           </section>
       </main>
@@ -85,7 +43,17 @@
           <button class="popup__save-btn" type="submit">Сохранить</button>
         </form>  
       </div>
-    </div>    
-  <script src="js/script.js"></script>
+    </div>
+  <template class="template">
+    <li class="mesto">
+      <button class="mesto__delete-btn" type="button" aria-label="Удалить"></button>
+      <img class="mesto__image">
+      <div class="mesto__label">
+        <h3 class="mesto__title"></h3>
+        <button class="mesto__like-btn" type="button" aria-label="Like"></button>
+      </div>  
+    </li>
+  </template>      
+  <script src="./js/script.js"></script>
   </body>
 </html>
