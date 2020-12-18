@@ -7,16 +7,18 @@ const aboutProfile = document.querySelector('.profile__about'); //род дея�
 //форма редактирования профиля
 const editPopup = document.querySelector('.popup__container_type_edit'); //контейнер формы редактированя
 const editBtn = document.querySelector('.profile__edit-btn'); //кнопка вызова формы редактирования
-const nameEditForm = document.querySelector('.popup__input_content_name'); //поле ввода имени
-const aboutEditForm = document.querySelector('.popup__input_content_about'); //поле ввода рода деятельности
+const editFormName = document.querySelector('.popup__input_content_name'); //поле ввода имени
+const editFormAbout = document.querySelector('.popup__input_content_about'); //поле ввода рода деятельности
+const editForm = document.querySelector('.popup__form_type_edit'); //кнопка submit формы редактирования профиля
+
 
 //форма добавления нового изображения
 const addPopup = document.querySelector('.popup__container_type_add'); //контейнер формы добавления
 const addBtn = document.querySelector('.profile__add-btn'); //кнопка вызова формы добавления
-const nameAddForm = document.querySelector('.popup__input_content_image-name');
-const linkAddForm = document.querySelector('.popup__input_content_image-link');
+const addFormName = document.querySelector('.popup__input_content_image-name');
+const addFormLink = document.querySelector('.popup__input_content_image-link');
+const addForm = document.querySelector('.popup__form_type_add');
 
-const formSave = document.querySelector('.popup__form'); //кнопка submit
 
 const initialCards = [
     {
@@ -82,8 +84,8 @@ function hidePopupBlock() {
 //показывает форму/полноразмерное изображение
 function showForm(a) {
     
-    nameEditForm.value = nameProfile.textContent;
-    aboutEditForm.value = aboutProfile.textContent;
+    editFormName.value = editFormName.textContent;
+    editFormAbout.value = editFormAbout.textContent;
     
     a.classList.add('popup_opened');
 
@@ -99,12 +101,29 @@ function closePopup(a) {
 
 //добавляет новое изображение
 function addNewItem() {
-    const inputName = nameAddForm.value;
-    const inputLink = linkAddForm.value;
+    const inputName = addFormName.value;
+    const inputLink = addFormLink.value;
     const newItem = composeItem({name: inputName, link: inputLink});
     listContainerElement.prepend(newItem);
-    nameAddForm.value = '';
-    linkAddForm.value = '';
+    addFormName.value = '';
+    addFormLink.value = '';
+}
+//submit редактирования профиля
+function formSubmitEdit (evt) {
+    evt.preventDefault();
+       
+    nameProfile.textContent = editFormName.value;
+    aboutProfile.textContent = editFormAbout.value;
+
+    closePopup(editPopup);
+}
+//submit добавления изображения
+function formSubmitAdd (evt) {
+    evt.preventDefault();
+    
+    addNewItem();
+
+    closePopup(addPopup);
 }
 
 //лисенер кнопки редактирования профиля
@@ -119,5 +138,11 @@ addBtn.addEventListener('click', function() {showForm(addPopup)});
         closePopup(evt.target.closest('.popup__container'));
     });
 });
+
+//лисенер формы редактирования профиля
+editForm.addEventListener('submit', formSubmitEdit);
+
+//лисенер формы добавления изображений
+addForm.addEventListener('submit', formSubmitAdd); 
 
 renderList();
