@@ -1,6 +1,9 @@
-.elements__item {
+.mesto {
     display: flex;
     flex-direction: column;
+    position: relative;
     width: 282px;
     justify-self: center;
+    border-radius: 10px;
+    overflow: hidden;
 }
