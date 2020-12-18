@@ -43,27 +43,22 @@ function renderList() {
 
     listContainerElement.append(...listItems);
     
-    console.log(newList);
 }
     
-function composeItem({title, link}){
+function composeItem({name, link}) {
     const newItem = templateElement.content.cloneNode(true);
-    //const cardTitle = newCard.querySelector(".mesto__title");
-    //cardTitle.textContent = item.name;
+    const cardTitle = newItem.querySelector(".mesto__title");
+    const cardImage = newItem.querySelector(".mesto__image");
+    
+    cardTitle.textContent = name;
+    cardImage.src = link;
 
-    // const cardImage = newCard.querySelector(".mesto__image");
-    //cardImage.setAttribute('src', 'item.link');
 
     return newItem;
-
 }
 
+renderList();
 
-
-
-//function newCard() {
-//    const cardElement = cardTemplate.cloneNode(true);
-//}
 
 function openPopup() {
     container.classList.add('popup_opened');
