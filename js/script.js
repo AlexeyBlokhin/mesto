@@ -62,9 +62,15 @@ function composeItem({name, link}) {
     const cardTitle = newItem.querySelector('.mesto__title');
     const cardImage = newItem.querySelector('.mesto__image');
     const deleteBtn = newItem.querySelector('.mesto__delete-btn');
+    const likeBtn = newItem.querySelector('.mesto__like-btn');
     const deleteMesto = newItem.querySelector('.mesto');
     cardTitle.textContent = name;
     cardImage.src = link;
+    
+    likeBtn.addEventListener('click', function() {
+        likeBtn.classList.toggle('mesto__like-btn_active');
+    })
+
     deleteBtn.addEventListener('click', function() {
         deleteMesto.remove();
     });

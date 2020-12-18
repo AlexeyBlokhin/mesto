@@ -27,6 +27,7 @@
 @import url(../blocks/mesto/__label/mesto__label.css);
 @import url(../blocks/mesto/__title/mesto__title.css);
 @import url(../blocks/mesto/__like-btn/mesto__like-btn.css);
+@import url(../blocks/mesto/__like-btn/mesto__like-btn_active.css);
 
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
