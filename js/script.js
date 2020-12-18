@@ -1,6 +1,6 @@
 const popupBlock = document.querySelector('.popup'); //блок popup целиком
 const popupContainer = document.querySelector('.popup__container'); //общий елемент контейнеров форм/полноразмерных изображений
-const closeBtns = document.querySelectorAll('.popup__close-btn'); //псевдомассив кнопок закрытия
+const closeBtns = document.querySelectorAll('.popup__close-btn'); //кнопки закрытия
 const nameProfile = document.querySelector('.profile__name'); //имя профиля
 const aboutProfile = document.querySelector('.profile__about'); //род деятельности профиля
 
@@ -10,7 +10,6 @@ const editBtn = document.querySelector('.profile__edit-btn'); //кнопка в�
 const editFormName = document.querySelector('.popup__input_content_name'); //поле ввода имени
 const editFormAbout = document.querySelector('.popup__input_content_about'); //поле ввода рода деятельности
 const editForm = document.querySelector('.popup__form_type_edit'); //кнопка submit формы редактирования профиля
-
 
 //форма добавления нового изображения
 const addPopup = document.querySelector('.popup__container_type_add'); //контейнер формы добавления
@@ -60,11 +59,15 @@ function renderList() {
 //создает элементы списка из массива    
 function composeItem({name, link}) {
     const newItem = templateElement.content.cloneNode(true);
-    const cardTitle = newItem.querySelector(".mesto__title");
-    const cardImage = newItem.querySelector(".mesto__image");
-    
+    const cardTitle = newItem.querySelector('.mesto__title');
+    const cardImage = newItem.querySelector('.mesto__image');
+    const deleteBtn = newItem.querySelector('.mesto__delete-btn');
+    const deleteMesto = newItem.querySelector('.mesto');
     cardTitle.textContent = name;
     cardImage.src = link;
+    deleteBtn.addEventListener('click', function() {
+        deleteMesto.remove();
+    });
 
     return newItem;
 }
@@ -84,14 +87,22 @@ function hidePopupBlock() {
 //показывает форму/полноразмерное изображение
 function showForm(a) {
     
-    editFormName.value = editFormName.textContent;
-    editFormAbout.value = editFormAbout.textContent;
+    editFormName.value = nameProfile.textContent;
+    editFormAbout.value = aboutProfile.textContent;
     
     a.classList.add('popup_opened');
 
     showPopupBlock();
 };
+//submit редактирования профиля
+function formSubmitEdit (evt) {
+    evt.preventDefault();
+       
+    nameProfile.textContent = editFormName.value;
+    aboutProfile.textContent = editFormAbout.value;
 
+    closePopup(editPopup);
+}
 //закрывает форму/полноразмерное изображение
 function closePopup(a) {
     a.classList.remove('popup_opened');
@@ -108,15 +119,7 @@ function addNewItem() {
     addFormName.value = '';
     addFormLink.value = '';
 }
-//submit редактирования профиля
-function formSubmitEdit (evt) {
-    evt.preventDefault();
-       
-    nameProfile.textContent = editFormName.value;
-    aboutProfile.textContent = editFormAbout.value;
 
-    closePopup(editPopup);
-}
 //submit добавления изображения
 function formSubmitAdd (evt) {
     evt.preventDefault();
