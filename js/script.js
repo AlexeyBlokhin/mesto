@@ -15,13 +15,12 @@ const editForm = document.querySelector('.popup__form_type_edit'); //кнопк�
 //форма добавления нового изображения
 const addPopup = document.querySelector('.popup__container_type_add'); //контейнер формы добавления
 const addBtn = document.querySelector('.profile__add-btn'); //кнопка вызова формы добавления
-const addFormName = document.querySelector('.popup__input_content_image-name');
-const addFormLink = document.querySelector('.popup__input_content_image-link');
-const addForm = document.querySelector('.popup__form_type_add');
+const addFormName = document.querySelector('.popup__input_content_image-name'); //поле ввода названия карточки
+const addFormLink = document.querySelector('.popup__input_content_image-link'); //поле ввода ссылки на изображение
+const addForm = document.querySelector('.popup__form_type_add'); 
 
 //всплывающее окно с изображением
 const popupImageContainer = document.querySelector('.popup__container_fullsize-image');
-const popupImageGroup = document.querySelector('.popup__image-group');
 const popupImage = document.querySelector('.popup__image');
 const popupSubtitle = document.querySelector('.popup__subtitle');
 
@@ -95,10 +94,6 @@ function composeItem({name, link}) {
     return newItem;
 }
 
-
-
-
-
 function togglePopupBlock(popup) {
     popupBlock.classList.toggle('popup_opened');
     popup.classList.toggle('popup_opened');
@@ -113,12 +108,6 @@ function formSubmitEdit (evt) {
 
     togglePopupBlock(editPopup);
 }
-//закрывает форму/полноразмерное изображение
-// function closePopup(popup) {
-//     popup.classList.remove('popup_opened');
-
-//     togglePopupBlock();
-// }
 
 //добавляет новое изображение
 function addNewItem() {
