@@ -1,0 +1,9 @@
+.popup__subtitle {
+    align-self: flex-start;
+    margin: 0;
+    padding: 10px 0 0;
+    font-size: 12px;
+    line-height: 1.2;
+    color: #fff;
+    font-weight: 400;
+}

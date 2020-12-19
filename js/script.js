@@ -4,6 +4,7 @@ const closeBtns = document.querySelectorAll('.popup__close-btn'); //кнопки
 const nameProfile = document.querySelector('.profile__name'); //имя профиля
 const aboutProfile = document.querySelector('.profile__about'); //род деятельности профиля
 
+
 //форма редактирования профиля
 const editPopup = document.querySelector('.popup__container_type_edit'); //контейнер формы редактированя
 const editBtn = document.querySelector('.profile__edit-btn'); //кнопка вызова формы редактирования
@@ -17,6 +18,12 @@ const addBtn = document.querySelector('.profile__add-btn'); //кнопка вы�
 const addFormName = document.querySelector('.popup__input_content_image-name');
 const addFormLink = document.querySelector('.popup__input_content_image-link');
 const addForm = document.querySelector('.popup__form_type_add');
+
+//всплывающее окно с изображением
+const popupImageContainer = document.querySelector('.popup__container_fullsize-image');
+const popupImageGroup = document.querySelector('.popup__image-group');
+const popupImage = document.querySelector('.popup__image');
+const popupSubtitle = document.querySelector('.popup__subtitle');
 
 
 const initialCards = [
@@ -64,9 +71,11 @@ function composeItem({name, link}) {
     const deleteBtn = newItem.querySelector('.mesto__delete-btn');
     const likeBtn = newItem.querySelector('.mesto__like-btn');
     const deleteMesto = newItem.querySelector('.mesto');
+
     cardTitle.textContent = name;
     cardImage.src = link;
-    
+    cardImage.alt = '';
+
     likeBtn.addEventListener('click', function() {
         likeBtn.classList.toggle('mesto__like-btn_active');
     })
@@ -75,31 +84,26 @@ function composeItem({name, link}) {
         deleteMesto.remove();
     });
 
+    cardImage.addEventListener('click', function composeImagePopup() {
+        popupImage.src = cardImage.src;
+        popupSubtitle.textContent = cardTitle.textContent;
+
+        togglePopupBlock(popupImageContainer);
+        
+    })
+
     return newItem;
 }
 
-//показывает блок popup
-function showPopupBlock() {
-    popupBlock.classList.add('popup_opened');
-    console.log('блок есть');
-};
 
-//скрывает блок popup
-function hidePopupBlock() {
-    popupBlock.classList.remove('popup_opened');
-    console.log('блока нет');
+
+
+
+function togglePopupBlock(popup) {
+    popupBlock.classList.toggle('popup_opened');
+    popup.classList.toggle('popup_opened');
 }
 
-//показывает форму/полноразмерное изображение
-function showForm(a) {
-    
-    editFormName.value = nameProfile.textContent;
-    editFormAbout.value = aboutProfile.textContent;
-    
-    a.classList.add('popup_opened');
-
-    showPopupBlock();
-};
 //submit редактирования профиля
 function formSubmitEdit (evt) {
     evt.preventDefault();
@@ -107,14 +111,14 @@ function formSubmitEdit (evt) {
     nameProfile.textContent = editFormName.value;
     aboutProfile.textContent = editFormAbout.value;
 
-    closePopup(editPopup);
+    togglePopupBlock(editPopup);
 }
 //закрывает форму/полноразмерное изображение
-function closePopup(a) {
-    a.classList.remove('popup_opened');
+// function closePopup(popup) {
+//     popup.classList.remove('popup_opened');
 
-    hidePopupBlock();
-}
+//     togglePopupBlock();
+// }
 
 //добавляет новое изображение
 function addNewItem() {
@@ -132,19 +136,24 @@ function formSubmitAdd (evt) {
     
     addNewItem();
 
-    closePopup(addPopup);
+    togglePopupBlock(addPopup);
 }
 
 //лисенер кнопки редактирования профиля
-editBtn.addEventListener('click', function() {showForm(editPopup)});
+editBtn.addEventListener('click', function() {
+    editFormName.value = nameProfile.textContent;
+    editFormAbout.value = aboutProfile.textContent;
+
+    togglePopupBlock(editPopup)
+});
 
 //лисенер кнопки добавление изображений
-addBtn.addEventListener('click', function() {showForm(addPopup)});
+addBtn.addEventListener('click', function() {togglePopupBlock(addPopup)});
 
 //лисенер кнопок закрытия
 [...closeBtns].forEach(function(closeBtns) {
     closeBtns.addEventListener('click', function(evt) {
-        closePopup(evt.target.closest('.popup__container'));
+        togglePopupBlock(evt.target.closest('.popup__container'));
     });
 });
 
