@@ -1,0 +1,12 @@
+.popup__image-group {
+    display: flex;
+    flex-direction: column;
+    max-width: 75%;
+    max-height: 75%;
+    margin: 0;
+    justify-content: center;
+    align-items: flex-end;
+    align-self: center;
+    position: relative;
+    
+}
