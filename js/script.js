@@ -3,7 +3,8 @@ const popupContainer = document.querySelector('.popup__container'); //общий
 const closeBtns = document.querySelectorAll('.popup__close-btn'); //кнопки закрытия
 const nameProfile = document.querySelector('.profile__name'); //имя профиля
 const aboutProfile = document.querySelector('.profile__about'); //род деятельности профиля
-
+const listContainerElement = document.querySelector('.elements__grid'); //контейнер для карточек
+const templateElement = document.querySelector('.template'); //шаблон карточки
 
 //форма редактирования профиля
 const editPopup = document.querySelector('.popup__container_type_edit'); //контейнер формы редактированя
@@ -23,7 +24,6 @@ const addForm = document.querySelector('.popup__form_type_add');
 const popupImageContainer = document.querySelector('.popup__container_fullsize-image');
 const popupImage = document.querySelector('.popup__image');
 const popupSubtitle = document.querySelector('.popup__subtitle');
-
 
 const initialCards = [
     {
@@ -52,16 +52,13 @@ const initialCards = [
     }
 ];
 
-const listContainerElement = document.querySelector('.elements__grid');
-const templateElement = document.querySelector('.template');
-
 //добавляет созданные из массива места в DOM
 function renderList() {
     const listItems =  initialCards.map(composeItem);
 
     listContainerElement.append(...listItems);
-    
 }
+
 //создает элементы списка из массива    
 function composeItem({name, link}) {
     const newItem = templateElement.content.cloneNode(true);
@@ -73,7 +70,7 @@ function composeItem({name, link}) {
 
     cardTitle.textContent = name;
     cardImage.src = link;
-    cardImage.alt = '';
+    cardImage.alt = 'загруженное изображение';
 
     likeBtn.addEventListener('click', function() {
         likeBtn.classList.toggle('mesto__like-btn_active');
@@ -83,7 +80,7 @@ function composeItem({name, link}) {
         deleteMesto.remove();
     });
 
-    cardImage.addEventListener('click', function composeImagePopup() {
+    cardImage.addEventListener('click', function () {
         popupImage.src = cardImage.src;
         popupSubtitle.textContent = cardTitle.textContent;
 

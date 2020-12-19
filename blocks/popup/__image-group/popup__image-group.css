@@ -1,8 +1,8 @@
 .popup__image-group {
     display: flex;
     flex-direction: column;
-    max-width: 75%;
-    max-height: 75%;
+    max-width: 80%;
+    max-height: 80%;
     margin: 0;
     justify-content: center;
     align-items: flex-end;
