@@ -34,23 +34,27 @@
       </footer>
     </div>
     <div class="popup">
-      <div class="popup__container popup__container_type_edit" >
-        <button class="popup__close-btn" type="button" aria-label="Закрыть"></button>
-        <h2 class="popup__title">Редактировать профиль</h2>
-        <form class="popup__form popup__form_type_edit" method="POST" name="userInfo"> 
-          <input class="popup__input popup__input_content_name" type="text" name="name" placeholder="">
-          <input class="popup__input popup__input_content_about" type="text" name="about" placeholder="">
-          <button class="popup__submit-btn" type="submit">Сохранить</button>
-        </form>  
+      <div class="popup__container popup__container_type_edit">
+        <div class="popup__window">
+          <button class="popup__close-btn" type="button" aria-label="Закрыть"></button>
+          <h2 class="popup__title">Редактировать профиль</h2>
+          <form class="popup__form popup__form_type_edit" method="POST" name="userInfo"> 
+            <input class="popup__input popup__input_content_name" type="text" name="name" placeholder="">
+            <input class="popup__input popup__input_content_about" type="text" name="about" placeholder="">
+            <button class="popup__submit-btn" type="submit">Сохранить</button>
+          </form>
+        </div> 
       </div>
       <div class="popup__container popup__container_type_add">
-        <button class="popup__close-btn" type="button" aria-label="Закрыть"></button>
-        <h2 class="popup__title">Новое место</h2>
-        <form class="popup__form popup__form_type_add" method="POST" name="userInfo"> 
-          <input class="popup__input popup__input_content_image-name" type="text" name="name" placeholder="Название">
-          <input class="popup__input popup__input_content_image-link" type="text" name="about" placeholder="Ссылка на картинку">
-          <button class="popup__submit-btn" type="submit">Создать</button>
-        </form>  
+        <div class="popup__window">
+          <button class="popup__close-btn" type="button" aria-label="Закрыть"></button>
+          <h2 class="popup__title">Новое место</h2>
+          <form class="popup__form popup__form_type_add" method="POST" name="userInfo"> 
+            <input class="popup__input popup__input_content_image-name" type="text" name="name" placeholder="Название">
+            <input class="popup__input popup__input_content_image-link" type="text" name="about" placeholder="Ссылка на картинку">
+            <button class="popup__submit-btn" type="submit">Создать</button>
+          </form>
+        </div>  
       </div>
       <div class="popup__container popup__container_fullsize-image">
         <div class="popup__image-group">
@@ -69,7 +73,8 @@
         <button class="mesto__like-btn" type="button" aria-label="Лайк"></button>
       </div>  
     </li>
-  </template>      
+  </template>
+  <script src="./js/initial-cards.js"></script>      
   <script src="./js/script.js"></script>
   </body>
 </html>
