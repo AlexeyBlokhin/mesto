@@ -26,7 +26,7 @@ const popupSubtitle = document.querySelector('.popup__subtitle'); //назван
 function renderList() {
     const listItems = initialCards.map(composeItem);
     listContainerElement.append(...listItems);
-}
+};
 //создает элементы списка из массива
 function composeItem({ name, link }) {
     const newItem = templateElement.content.cloneNode(true);
@@ -60,7 +60,7 @@ function handleEsc(evt) {
     if (evt.key === 'Escape') {
         closePopup(document.querySelector('.popup_opened'));
     }
-}
+};
 //открывает попап
 function openPopup(container) {
     document.addEventListener('keydown', handleEsc);
@@ -75,30 +75,35 @@ function closePopup(container) {
 function handleEditFormSubmit() {
     nameProfile.textContent = editFormName.value;
     aboutProfile.textContent = editFormAbout.value;
-    closePopup(editPopup);
-}
+    closePopup(editPopup)
+};
 //добавляет новое изображение
 function addNewItem() {
     listContainerElement.prepend(composeItem({
         name: addFormName.value,
         link: addFormLink.value
-    }));
+    }))
     addForm.reset();
-}
+};
 //обработчик формы добавления изображения
 function handleAddFormSubmit() {
     addNewItem();
+    addForm.addEventListener('keydown', (evt) => {
+        if(evt.key === 'Enter') {
+            addForm.submit;
+            closePopup(addPopup);
+        }
+    })
     closePopup(addPopup);
-}
-//лисенер кнопки редактирования профиля
+};
+//лисенер кнопки вызова формы редактирования профиля
 editButton.addEventListener('click', () => {
     editFormName.value = nameProfile.textContent;
     editFormAbout.value = aboutProfile.textContent;
-    console.log(editForm.checkValidity());
     setButtonState(editSubmit, editForm.checkValidity(), validationConfig);
     openPopup(editPopup);
 });
-//лисенер кнопки добавление изображений
+//лисенер кнопки вызова формы добавления изображений
 addButton.addEventListener('click', () => {
     setButtonState(addSubmit, addForm.checkValidity(), validationConfig);
     openPopup(addPopup)
@@ -106,8 +111,8 @@ addButton.addEventListener('click', () => {
 //лисенер кнопок закрытия
 closeButtons.forEach(function (closeButtons) {
     closeButtons.addEventListener('click', function (evt) {
-        closePopup(evt.target.closest('.popup__container'));
-    });
+        closePopup(evt.target.closest('.popup__container'))
+    })
 });
 //лисенер закрытия по щелчку по фону
 popupContainer.forEach((popupContainer) => {
@@ -116,7 +121,7 @@ popupContainer.forEach((popupContainer) => {
             closePopup(popupContainer)
         }
     })
-})
+});
 //лисенер сабмита формы редактирования профиля
 editForm.addEventListener('submit', handleEditFormSubmit);
 //лисенер сабмита формы добавления изображений
