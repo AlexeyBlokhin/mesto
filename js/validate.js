@@ -31,7 +31,7 @@ function checkInputValidity(form, input, config) {
 }
 
 function setButtonState(button, isActive, config) {
-  if (isActive) {
+  if (isActive === true) {
     button.classList.remove(config.submitButtonInvalidClass);
     button.disabled = false;
   } else {

@@ -9,7 +9,7 @@ const editPopup = document.querySelector('.popup__container_type_edit'); //ко�
 const editButton = document.querySelector('.profile__edit-btn'); //кнопка вызова формы редактирования
 const editFormName = document.querySelector('.popup__input_content_name'); //поле ввода имени
 const editFormAbout = document.querySelector('.popup__input_content_about'); //поле ввода рода деятельности
-const editForm = document.querySelector('.popup__form_type_edit'); //кнопка submit формы редактирования профиля
+const editForm = document.querySelector('.popup__form_type_edit'); //форма редактирования профиля
 //форма добавления нового изображения
 const addPopup = document.querySelector('.popup__container_type_add'); //контейнер формы добавления
 const addButton = document.querySelector('.profile__add-btn'); //кнопка вызова формы добавления
@@ -22,11 +22,11 @@ const popupImage = document.querySelector('.popup__image'); //изображен
 const popupSubtitle = document.querySelector('.popup__subtitle'); //название изображения
 //добавляет созданные из массива места в DOM
 function renderList() {
-    const listItems =  initialCards.map(composeItem);
+    const listItems = initialCards.map(composeItem);
     listContainerElement.append(...listItems);
 }
 //создает элементы списка из массива
-function composeItem({name, link}) {
+function composeItem({ name, link }) {
     const newItem = templateElement.content.cloneNode(true);
     const cardTitle = newItem.querySelector('.mesto__title');
     const cardImage = newItem.querySelector('.mesto__image');
@@ -52,17 +52,25 @@ function composeItem({name, link}) {
     deleteButton.addEventListener('click', handleDeleteButton);
     cardImage.addEventListener('click', handleCardImage);
     return newItem;
+};
+//функция закрытия попапа по нажатию Esc
+function handleEsc(evt) {
+    if (evt.key === 'Escape') {
+        closePopup(document.querySelector('.popup_opened'));
+    }
 }
 //открывает попап
-function openPopup(any) {
-    any.classList.add('popup_opened');
-}
+function openPopup(container) {
+    document.addEventListener('keydown', handleEsc);
+    container.classList.add('popup_opened');
+};
 //закрывает попап
-function closePopup(any) {
-    any.classList.remove('popup_opened');
-}
+function closePopup(container) {
+    document.removeEventListener('keydown', handleEsc);
+    container.classList.remove('popup_opened');
+};
 //обработчик формы редактирования профиля
-function handleEditFormSubmit (evt) {
+function handleEditFormSubmit() {
     nameProfile.textContent = editFormName.value;
     aboutProfile.textContent = editFormAbout.value;
     closePopup(editPopup);
@@ -76,22 +84,21 @@ function addNewItem() {
     addForm.reset();
 }
 //обработчик формы добавления изображения
-function handleAddFormSubmit(evt) {
+function handleAddFormSubmit() {
     addNewItem();
     closePopup(addPopup);
 }
 //лисенер кнопки редактирования профиля
-editButton.addEventListener('click', function() {
+editButton.addEventListener('click', function () {
     editFormName.value = nameProfile.textContent;
     editFormAbout.value = aboutProfile.textContent;
-    setButtonState(editButton, editForm.checkValidity(), validationConfig);
     openPopup(editPopup);
 });
 //лисенер кнопки добавление изображений
 addButton.addEventListener('click', () => openPopup(addPopup));
 //лисенер кнопок закрытия
-closeButtons.forEach(function(closeButtons) {
-    closeButtons.addEventListener('click', function(evt) {
+closeButtons.forEach(function (closeButtons) {
+    closeButtons.addEventListener('click', function (evt) {
         closePopup(evt.target.closest('.popup__container'));
     });
 });
@@ -99,25 +106,14 @@ closeButtons.forEach(function(closeButtons) {
 popupContainer.forEach((popupContainer) => {
     //console.log(popupContainer)
     popupContainer.addEventListener('click', (evt) => {
-        if(evt.target.classList.contains('popup_opened')) {
+        if (evt.target.classList.contains('popup_opened')) {
             closePopup(popupContainer)
         }
     })
 })
-//лисенер закрытия по нажатию Esc
-popupContainer.forEach((popupContainer) => {
-    popupContainer.addEventListener('keydown', (evt) => {
-        console.log(evt.key);
-        if(evt.key === 'Esc') {
-            console.log(jgf)
-            closePopup(popupContainer);
-        }
-    })
-})
-
-//лисенер формы редактирования профиля
+//лисенер сабмита формы редактирования профиля
 editForm.addEventListener('submit', handleEditFormSubmit);
-//лисенер формы добавления изображений
+//лисенер сабмита формы добавления изображений
 addForm.addEventListener('submit', handleAddFormSubmit);
 
 renderList();
