@@ -18,3 +18,7 @@
     opacity: 0.6;
     cursor: pointer;
 }
+
+.mesto__delete-btn:focus {
+    outline: none;
+}
