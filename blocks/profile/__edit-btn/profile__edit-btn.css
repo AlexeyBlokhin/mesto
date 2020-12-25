@@ -15,11 +15,13 @@
     cursor: pointer;
 }
 
+.profile__edit-btn:focus {
+    outline: none;
+}
+
 @media screen and (max-width: 480px) {
     .profile__edit-btn {
         width: 18px;
         height: 18px;
-       
-        
     }
 }

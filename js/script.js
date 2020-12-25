@@ -3,6 +3,7 @@ const nameProfile = document.querySelector('.profile__name'); //имя проф�
 const aboutProfile = document.querySelector('.profile__about'); //род деятельности профиля
 const listContainerElement = document.querySelector('.elements__grid'); //контейнер для карточек
 const templateElement = document.querySelector('.template'); //шаблон карточки
+const popupContainer = document.querySelectorAll('.popup__container'); //окно попапа
 //форма редактирования профиля
 const editPopup = document.querySelector('.popup__container_type_edit'); //контейнер формы редактированя
 const editButton = document.querySelector('.profile__edit-btn'); //кнопка вызова формы редактирования
@@ -62,19 +63,20 @@ function closePopup(any) {
 }
 //обработчик формы редактирования профиля
 function handleEditFormSubmit (evt) {
-    evt.preventDefault();
     nameProfile.textContent = editFormName.value;
     aboutProfile.textContent = editFormAbout.value;
     closePopup(editPopup);
 }
 //добавляет новое изображение
 function addNewItem() {
-    listContainerElement.prepend(composeItem({name: addFormName.value, link: addFormLink.value}));
+    listContainerElement.prepend(composeItem({
+        name: addFormName.value,
+        link: addFormLink.value
+    }));
     addForm.reset();
 }
 //обработчик формы добавления изображения
 function handleAddFormSubmit(evt) {
-    evt.preventDefault();
     addNewItem();
     closePopup(addPopup);
 }
@@ -82,7 +84,8 @@ function handleAddFormSubmit(evt) {
 editButton.addEventListener('click', function() {
     editFormName.value = nameProfile.textContent;
     editFormAbout.value = aboutProfile.textContent;
-    openPopup(editPopup)
+    setButtonState(editButton, editForm.checkValidity(), validationConfig);
+    openPopup(editPopup);
 });
 //лисенер кнопки добавление изображений
 addButton.addEventListener('click', () => openPopup(addPopup));
@@ -92,6 +95,26 @@ closeButtons.forEach(function(closeButtons) {
         closePopup(evt.target.closest('.popup__container'));
     });
 });
+//лисенер закрытия по щелчку по фону
+popupContainer.forEach((popupContainer) => {
+    //console.log(popupContainer)
+    popupContainer.addEventListener('click', (evt) => {
+        if(evt.target.classList.contains('popup_opened')) {
+            closePopup(popupContainer)
+        }
+    })
+})
+//лисенер закрытия по нажатию Esc
+popupContainer.forEach((popupContainer) => {
+    popupContainer.addEventListener('keydown', (evt) => {
+        console.log(evt.key);
+        if(evt.key === 'Esc') {
+            console.log(jgf)
+            closePopup(popupContainer);
+        }
+    })
+})
+
 //лисенер формы редактирования профиля
 editForm.addEventListener('submit', handleEditFormSubmit);
 //лисенер формы добавления изображений

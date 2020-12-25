@@ -20,6 +20,10 @@
     cursor: pointer;
 }
 
+.popup__close-btn:focus {
+    outline: none;
+}
+
 @media screen and (max-width: 480px) {
     .popup__close-btn {
         top: -42px;

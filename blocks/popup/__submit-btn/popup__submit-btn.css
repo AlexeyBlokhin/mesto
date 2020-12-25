@@ -11,12 +11,15 @@
     margin: 18px auto 0;
     border-width: 0;
     transition: opacity 0.2s linear 0s;    
-    
 }
 
 .popup__submit-btn:hover {
     opacity: 0.8;
     cursor: pointer;
+}
+
+.popup__submit-btn:focus {
+    outline: none;
 }
 
 @media screen and (max-width: 540px) {
