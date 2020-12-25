@@ -41,9 +41,9 @@
           <form class="popup__form popup__form_type_edit" method="POST" name="editProfile" id="edit" novalidate>
             <fieldset class="popup__fieldset">
               <input id="popup__input_user-name" class="popup__input popup__input_content_name" type="text" name="user-name" placeholder="" minlength="2" maxlength="40" required>
-              <span class="popup__input-error popup__input_user-name-error"></span>
+              <span class="popup__input-error" id="popup__input_user-name-error"></span>
               <input id="popup__input_user-about" class="popup__input popup__input_content_about" type="text" name="user-about" placeholder="" minlength="2" maxlength="200" required>
-              <span class="popup__input-error popup__input_user-about-error"></span>
+              <span class="popup__input-error" id="popup__input_user-about-error"></span>
             </fieldset>
             <button class="popup__submit-btn popup__submit-btn_edit" type="submit">Сохранить</button>
           </form>
@@ -56,9 +56,9 @@
           <form class="popup__form popup__form_type_add" method="POST" name="newCard" id="new" novalidate>
             <fieldset class="popup__fieldset">
               <input id="popup__input_image-name" class="popup__input popup__input_content_image-name" type="text" name="image-name" placeholder="Название" minlength="2" maxlength="30" required>
-              <span class="popup__input-error popup__input_image-name-error"></span>
+              <span class="popup__input-error" id="popup__input_image-name-error"></span>
               <input id="popup__input_image-link" class="popup__input popup__input_content_image-link" type="url" name="about" placeholder="Ссылка на картинку" required>
-              <span class="popup__input-error popup__input_image-link-error"></span>
+              <span class="popup__input-error" id="popup__input_image-link-error"></span>
             </fieldset>
             <button class="popup__submit-btn popup__submit-btn_add" type="submit">Создать</button>
           </form>

@@ -8,14 +8,14 @@ const validationConfig = {
 };
 //показывает текст ошибки
 function showError(form, input, config) {
-    const error = form.querySelector(`.${input.id}-error`);
+    const error = form.querySelector(`#${input.id}-error`);
     error.textContent = input.validationMessage;
     error.classList.add(config.errorMessageClass);
     input.classList.add(config.inputInvalidClass);
 };
 //прячет текст ошибки
 function hideError(form, input, config) {
-    const error = form.querySelector(`.${input.id}-error`);
+    const error = form.querySelector(`#${input.id}-error`);
     error.textContent = "";
     input.classList.remove(config.inputInvalidClass);
 };
