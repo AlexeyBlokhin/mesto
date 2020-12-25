@@ -4,23 +4,25 @@ const aboutProfile = document.querySelector('.profile__about'); //род дея�
 const listContainerElement = document.querySelector('.elements__grid'); //контейнер для карточек
 const templateElement = document.querySelector('.template'); //шаблон карточки
 const popupContainer = document.querySelectorAll('.popup__container'); //окно попапа
-//форма редактирования профиля
+//попап редактирования профиля
 const editPopup = document.querySelector('.popup__container_type_edit'); //контейнер формы редактированя
-const editButton = document.querySelector('.profile__edit-btn'); //кнопка вызова формы редактирования
+const editButton = document.querySelector('.profile__edit-btn'); //кнопка вызова формы
 const editFormName = document.querySelector('.popup__input_content_name'); //поле ввода имени
 const editFormAbout = document.querySelector('.popup__input_content_about'); //поле ввода рода деятельности
-const editForm = document.querySelector('.popup__form_type_edit'); //форма редактирования профиля
-//форма добавления нового изображения
-const addPopup = document.querySelector('.popup__container_type_add'); //контейнер формы добавления
-const addButton = document.querySelector('.profile__add-btn'); //кнопка вызова формы добавления
+const editForm = document.querySelector('.popup__form_type_edit'); //форма
+const editSubmit = document.querySelector('.popup__submit-btn_edit') //кнопка сабмита
+//попап добавления нового изображения
+const addPopup = document.querySelector('.popup__container_type_add'); //контейнер формы
+const addButton = document.querySelector('.profile__add-btn'); //кнопка вызова формы
 const addFormName = document.querySelector('.popup__input_content_image-name'); //поле ввода названия карточки
 const addFormLink = document.querySelector('.popup__input_content_image-link'); //поле ввода ссылки на изображение
-const addForm = document.querySelector('.popup__form_type_add'); //форма добавления изображения
+const addForm = document.querySelector('.popup__form_type_add'); //форма
+const addSubmit = document.querySelector('.popup__submit-btn_add') //кнопка сабмита
 //всплывающее окно с изображением
 const popupImageContainer = document.querySelector('.popup__container_fullsize-image'); //контейнер попапа с изображением
 const popupImage = document.querySelector('.popup__image'); //изображение для попапа
 const popupSubtitle = document.querySelector('.popup__subtitle'); //название изображения
-//добавляет созданные из массива места в DOM
+//добавляет созданные из массива карточки в DOM
 function renderList() {
     const listItems = initialCards.map(composeItem);
     listContainerElement.append(...listItems);
@@ -89,13 +91,18 @@ function handleAddFormSubmit() {
     closePopup(addPopup);
 }
 //лисенер кнопки редактирования профиля
-editButton.addEventListener('click', function () {
+editButton.addEventListener('click', () => {
     editFormName.value = nameProfile.textContent;
     editFormAbout.value = aboutProfile.textContent;
+    console.log(editForm.checkValidity());
+    setButtonState(editSubmit, editForm.checkValidity(), validationConfig);
     openPopup(editPopup);
 });
 //лисенер кнопки добавление изображений
-addButton.addEventListener('click', () => openPopup(addPopup));
+addButton.addEventListener('click', () => {
+    setButtonState(addSubmit, addForm.checkValidity(), validationConfig);
+    openPopup(addPopup)
+});
 //лисенер кнопок закрытия
 closeButtons.forEach(function (closeButtons) {
     closeButtons.addEventListener('click', function (evt) {
@@ -104,7 +111,6 @@ closeButtons.forEach(function (closeButtons) {
 });
 //лисенер закрытия по щелчку по фону
 popupContainer.forEach((popupContainer) => {
-    //console.log(popupContainer)
     popupContainer.addEventListener('click', (evt) => {
         if (evt.target.classList.contains('popup_opened')) {
             closePopup(popupContainer)
