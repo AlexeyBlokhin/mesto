@@ -17,6 +17,7 @@ function showError(form, input, config) {
 function hideError(form, input, config) {
     const error = form.querySelector(`#${input.id}-error`);
     error.textContent = "";
+    error.classList.remove(config.errorMessageClass);
     input.classList.remove(config.inputInvalidClass);
 };
 //проверяет ввод на валидность

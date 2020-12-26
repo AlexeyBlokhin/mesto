@@ -1,25 +1,25 @@
-const closeButtons = document.querySelectorAll('.popup__close-btn'); //кнопки закрытия
+const closeButtonList = document.querySelectorAll('.popup__close-btn'); //кнопки закрытия
 const nameProfile = document.querySelector('.profile__name'); //имя профиля
 const aboutProfile = document.querySelector('.profile__about'); //род деятельности профиля
 const listContainerElement = document.querySelector('.elements__grid'); //контейнер для карточек
 const templateElement = document.querySelector('.template'); //шаблон карточки
-const popupContainer = document.querySelectorAll('.popup__container'); //окно попапа
+const popupContainerList = document.querySelectorAll('.popup'); //окно попапа
 //попап редактирования профиля
-const editPopup = document.querySelector('.popup__container_type_edit'); //контейнер формы редактированя
+const editPopup = document.querySelector('.popup_type_edit'); //контейнер формы редактированя
 const editButton = document.querySelector('.profile__edit-btn'); //кнопка вызова формы
 const editFormName = document.querySelector('.popup__input_content_name'); //поле ввода имени
 const editFormAbout = document.querySelector('.popup__input_content_about'); //поле ввода рода деятельности
 const editForm = document.querySelector('.popup__form_type_edit'); //форма
 const editSubmit = document.querySelector('.popup__submit-btn_edit') //кнопка сабмита
 //попап добавления нового изображения
-const addPopup = document.querySelector('.popup__container_type_add'); //контейнер формы
+const addPopup = document.querySelector('.popup_type_add'); //контейнер формы
 const addButton = document.querySelector('.profile__add-btn'); //кнопка вызова формы
 const addFormName = document.querySelector('.popup__input_content_image-name'); //поле ввода названия карточки
 const addFormLink = document.querySelector('.popup__input_content_image-link'); //поле ввода ссылки на изображение
 const addForm = document.querySelector('.popup__form_type_add'); //форма
 const addSubmit = document.querySelector('.popup__submit-btn_add') //кнопка сабмита
 //всплывающее окно с изображением
-const popupImageContainer = document.querySelector('.popup__container_fullsize-image'); //контейнер попапа с изображением
+const popupImageContainer = document.querySelector('.popup_type_image'); //контейнер попапа с изображением
 const popupImage = document.querySelector('.popup__image'); //изображение для попапа
 const popupSubtitle = document.querySelector('.popup__subtitle'); //название изображения
 //добавляет созданные из массива карточки в DOM
@@ -83,18 +83,12 @@ function addNewItem() {
         name: addFormName.value,
         link: addFormLink.value
     }))
-    addForm.reset();
 };
 //обработчик формы добавления изображения
 function handleAddFormSubmit() {
     addNewItem();
-    addForm.addEventListener('keydown', (evt) => {
-        if(evt.key === 'Enter') {
-            addForm.submit;
-            closePopup(addPopup);
-        }
-    })
     closePopup(addPopup);
+    addForm.reset();
 };
 //лисенер кнопки вызова формы редактирования профиля
 editButton.addEventListener('click', () => {
@@ -109,16 +103,16 @@ addButton.addEventListener('click', () => {
     openPopup(addPopup)
 });
 //лисенер кнопок закрытия
-closeButtons.forEach(function (closeButtons) {
-    closeButtons.addEventListener('click', function (evt) {
-        closePopup(evt.target.closest('.popup__container'))
+closeButtonList.forEach(function (closeButtonList) {
+    closeButtonList.addEventListener('click', function (evt) {
+        closePopup(evt.target.closest('.popup'))
     })
 });
 //лисенер закрытия по щелчку по фону
-popupContainer.forEach((popupContainer) => {
-    popupContainer.addEventListener('click', (evt) => {
+popupContainerList.forEach((popupContainerList) => {
+    popupContainerList.addEventListener('click', (evt) => {
         if (evt.target.classList.contains('popup_opened')) {
-            closePopup(popupContainer)
+            closePopup(popupContainerList)
         }
     })
 });
